@@ -1,0 +1,14 @@
+FROM ubuntu:xenial
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && \
+apt-get install -y pandoc && \
+apt-get install -y curl && \
+apt-get install -y unzip && \
+apt-get install -y -q python3-pip && \ 
+pip3 install boto3 awscli sphinx
+
+RUN curl https://rclone.org/install.sh | bash
+
+CMD ["/bin/bash"]
